@@ -6,7 +6,15 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
+import 'package:leader/Screens/authentication/screens/ConfirmNewPasswordScreen.dart'
+    as _i24;
+import 'package:leader/Screens/authentication/screens/ForgotPasswordScreen.dart'
+    as _i22;
 import 'package:leader/Screens/authentication/screens/LogInScreen.dart' as _i21;
+import 'package:leader/Screens/authentication/screens/SignUpScreen.dart'
+    as _i25;
+import 'package:leader/Screens/authentication/screens/VerificationCodeScreen.dart'
+    as _i23;
 import 'package:leader/Screens/categoryDetails/CategoryDetailsScreen.dart'
     as _i15;
 import 'package:leader/Screens/home/HomeScreen.dart' as _i5;
@@ -142,6 +150,27 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i21.LogInScreen();
+        }),
+    ForgotPasswordScreenRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i22.ForgotPasswordScreen();
+        }),
+    VerificationCodeScreenRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i23.VerificationCodeScreen();
+        }),
+    ConfirmNewPasswordScreenRoute.name: (routeData) =>
+        _i1.AdaptivePage<dynamic>(
+            routeData: routeData,
+            builder: (_) {
+              return _i24.ConfirmNewPasswordScreen();
+            }),
+    SignUpScreenRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i25.SignUpScreen();
         })
   };
 
@@ -167,7 +196,14 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(ConditionsScreenRoute.name, path: '/conditions-screen'),
         _i1.RouteConfig(ContactAsScreenRoute.name, path: '/contact-as-screen'),
         _i1.RouteConfig(TalabatyScreenRoute.name, path: '/talabaty-screen'),
-        _i1.RouteConfig(LogInScreenRoute.name, path: '/log-in-screen')
+        _i1.RouteConfig(LogInScreenRoute.name, path: '/log-in-screen'),
+        _i1.RouteConfig(ForgotPasswordScreenRoute.name,
+            path: '/forgot-password-screen'),
+        _i1.RouteConfig(VerificationCodeScreenRoute.name,
+            path: '/verification-code-screen'),
+        _i1.RouteConfig(ConfirmNewPasswordScreenRoute.name,
+            path: '/confirm-new-password-screen'),
+        _i1.RouteConfig(SignUpScreenRoute.name, path: '/sign-up-screen')
       ];
 }
 
@@ -341,4 +377,31 @@ class LogInScreenRoute extends _i1.PageRouteInfo {
   const LogInScreenRoute() : super(name, path: '/log-in-screen');
 
   static const String name = 'LogInScreenRoute';
+}
+
+class ForgotPasswordScreenRoute extends _i1.PageRouteInfo {
+  const ForgotPasswordScreenRoute()
+      : super(name, path: '/forgot-password-screen');
+
+  static const String name = 'ForgotPasswordScreenRoute';
+}
+
+class VerificationCodeScreenRoute extends _i1.PageRouteInfo {
+  const VerificationCodeScreenRoute()
+      : super(name, path: '/verification-code-screen');
+
+  static const String name = 'VerificationCodeScreenRoute';
+}
+
+class ConfirmNewPasswordScreenRoute extends _i1.PageRouteInfo {
+  const ConfirmNewPasswordScreenRoute()
+      : super(name, path: '/confirm-new-password-screen');
+
+  static const String name = 'ConfirmNewPasswordScreenRoute';
+}
+
+class SignUpScreenRoute extends _i1.PageRouteInfo {
+  const SignUpScreenRoute() : super(name, path: '/sign-up-screen');
+
+  static const String name = 'SignUpScreenRoute';
 }

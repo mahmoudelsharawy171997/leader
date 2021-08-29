@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:leader/Screens/globalwidgets/BottomButton.dart';
 import 'package:leader/Screens/home/tabs/leaderTab/HomeTapImports.dart';
 import 'package:leader/Screens/home/tabs/marketingTab/MarketingTab.dart';
 import 'package:leader/Screens/home/tabs/profileTab/ProfileTab.dart';
 import 'package:leader/Utilities.dart';
+import 'package:leader/routes/RouterImports.gr.dart';
 import 'tabs/favoriteTap/FavoriteTap.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,7 +36,31 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     currentTabIndex=widget.index;
+    // if(logedIn){
+    //   showAlertDialog(context);
+    // }
     super.initState();
+  }
+
+  showAlertDialog(BuildContext context) {
+
+    AlertDialog alert = AlertDialog(
+      title: Icon(Icons.info_outline,size: 25,color: Colors.black,),
+      content: Text("برجاء التسجيل اولا"),
+      actions: [
+        BottomButton(title: 'تسجيل',onTab: (){
+          AutoRouter.of(context).replace(LogInScreenRoute());
+        },
+        ),
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   @override
@@ -60,12 +87,14 @@ class _HomePageState extends State<HomePage> {
               size: 25,
             ),
             label: "تسوق",
-          ),BottomNavigationBarItem(
+          ),
+          BottomNavigationBarItem(
             icon: ImageIcon(AssetImage('assets/images/fav.png'),
               size: 20,
             ),
             label: "المفضلة",
-          ),BottomNavigationBarItem(
+          ),
+          BottomNavigationBarItem(
             icon: ImageIcon(AssetImage('assets/images/profile.png'),
               size: 20,
             ),

@@ -21,6 +21,10 @@ part of 'RouterImports.dart';
       AdaptiveRoute(page: ContactAsScreen,),
       AdaptiveRoute(page: TalabatyScreen,),
       AdaptiveRoute(page: LogInScreen,),
+      AdaptiveRoute(page: ForgotPasswordScreen,),
+      AdaptiveRoute(page: VerificationCodeScreen,),
+      AdaptiveRoute(page: ConfirmNewPasswordScreen,),
+      AdaptiveRoute(page: SignUpScreen,),
 
     ]
 )

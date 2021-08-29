@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:leader/Screens/settings/settingIconButton/widgets/InputField.dart';
+import 'package:leader/Screens/globalwidgets/InputField.dart';
+import 'package:leader/Screens/globalwidgets/WhiteBottomButton.dart';
 import 'package:leader/routes/RouterImports.gr.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -119,23 +120,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
             ),
             SizedBox(height: 15,),
-            InkWell(
-              child: Container(
-                alignment: Alignment.center,
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.teal[700]
-                ),
-                child: Text('Save Changes',
-                  style: TextStyle(fontSize: 20,color: Colors.white),
-                ),
-              ),
-              onTap: (){
-                if (!_formKey.currentState!.validate()) return;
-                AutoRouter.of(context).replace(HomePageRoute(index: 0));
-              },
-            ),
+            WhiteBottomButton(title: 'Save Changes',onTab: (){
+              if (!_formKey.currentState!.validate()) return;
+              AutoRouter.of(context).push(HomePageRoute(index: 0));
+            },),
           ],
         ),
       ),

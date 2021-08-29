@@ -3,7 +3,7 @@ import 'package:leader/Utilities.dart';
 class InputField extends StatelessWidget {
   InputField({
     Key? key,
-    required this.inputController, required this.title, required this.hintText, this.keyType=TextInputType.text, required this.iconData, this.secure=false,
+    required this.inputController, required this.title, required this.hintText, this.keyType=TextInputType.text, required this.iconData, this.secure=false, this.showBadge=true,
   }) : super(key: key);
 
   final TextEditingController inputController;
@@ -12,6 +12,7 @@ class InputField extends StatelessWidget {
   final TextInputType keyType;
   final IconData iconData;
   final bool secure;
+  final bool showBadge;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class InputField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title,style: TextStyle(color: Colors.grey[600]),),
+          Offstage(offstage: !showBadge,child: Text(title,style: TextStyle(color: Colors.grey[600]),)),
           SizedBox(height: 5,),
           TextFormField(
             keyboardType: keyType,
@@ -32,6 +33,11 @@ class InputField extends StatelessWidget {
             },
             obscureText: secure,
             decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Colors.grey
+                  )
+              ),
               fillColor: Colors.white,
               filled: true,
               suffixIcon: Icon(iconData,color: Colors.grey,),

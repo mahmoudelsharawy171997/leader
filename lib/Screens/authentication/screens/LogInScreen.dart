@@ -2,6 +2,10 @@ import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:leader/Screens/authentication/widgets/LabeledInputField.dart';
+import 'package:leader/Screens/authentication/widgets/PasswordLabeledInputField.dart';
+import 'package:leader/Screens/globalwidgets/BottomButton.dart';
+import 'package:leader/Screens/globalwidgets/WhiteBottomButton.dart';
 import 'package:leader/Utilities.dart';
 import 'package:leader/routes/RouterImports.gr.dart';
 
@@ -16,7 +20,7 @@ class _LogInScreenState extends State<LogInScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool showPassword = true;
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,109 +34,43 @@ class _LogInScreenState extends State<LogInScreen> {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width-20,
-                height: MediaQuery.of(context).size.height-20,
+                height: MediaQuery.of(context).size.height*0.9,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
                       child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 50),
+                        margin: EdgeInsets.only(top: 40),
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: Image.asset(
                           'assets/images/logo.png',
                         ),
                       ),
                     ),
-                    Text('تسجيل الدخول'),
-                    TextFormField(
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'this field requred!';
-                        }
-                      },
-                      controller: nameController,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: MyColors.primaryColor, width: 2.5),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        labelStyle: TextStyle(
-                          color: Colors.grey[700],
-                          fontSize: 20,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        labelText: 'رقم الجوال',
-                      ),
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'this field requred!';
-                        }
-                      },
-                      obscureText: showPassword,
-                      controller: passwordController,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: MyColors.primaryColor, width: 2.5),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            Icons.remove_red_eye,
-                            color: showPassword
-                                ? Colors.grey
-                                : MyColors.primaryColor,
-                          ),
-                          onPressed: () =>
-                              setState(() => showPassword = !showPassword),
-                        ),
-                        labelStyle: TextStyle(
-                          color: Colors.grey[700],
-                          fontSize: 20,
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
-                        labelText: 'كلمة المرور',
-                      ),
-                    ),
+                    Text('تسجيل الدخول',style: MyTextStyle.primaryTextStyle,),
+                    LabeledInputField(nameController: nameController,label: 'رقم الجوال',),
+                    PasswordLabeledInputField(label: 'كلمة المرور',passwordController: passwordController,),
                     Container(
                       width: double.infinity,
-                      child: Text(
-                        'هل نسيت كلمة المرور؟',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                        ),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    InkWell(
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.teal[700]
-                        ),
-                        child: Text('إستمرار',
-                          style: TextStyle(fontSize: 20,color: Colors.white),
+                      child: InkWell(
+                        onTap: (){
+                          AutoRouter.of(context).replace(ForgotPasswordScreenRoute());
+                        },
+                        child: Text(
+                          'هل نسيت كلمة المرور؟',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                          ),
+                          textAlign: TextAlign.right,
                         ),
                       ),
-                      onTap: (){
-                        if (!_formKey.currentState!.validate()) return;
-                        AutoRouter.of(context).replace(HomePageRoute(index: 0));
-                      },
                     ),
+
+                    BottomButton(title: 'إستمرار', onTab: () {
+                      if (!_formKey.currentState!.validate()) return;
+                      AutoRouter.of(context).push(HomePageRoute(index: 0));
+                    },),
                     Row(
                       children: [
                         Expanded(
@@ -156,22 +94,9 @@ class _LogInScreenState extends State<LogInScreen> {
                             )),
                       ],
                     ),
-                    InkWell(
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.teal,),
-                        ),
-                        child: Text('تسجيل جديد',
-                          style: TextStyle(fontSize: 20,color: Colors.teal[700]),
-                        ),
-                      ),
-                      onTap: (){},
-                    ),
+                    WhiteBottomButton(title: 'تسجيل جديد',onTab: (){
+                      AutoRouter.of(context).push(SignUpScreenRoute());
+                    },),
                   ],
                 ),
               ),
@@ -182,3 +107,5 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 }
+
+

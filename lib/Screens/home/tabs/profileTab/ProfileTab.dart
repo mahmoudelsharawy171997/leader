@@ -6,8 +6,14 @@ import 'package:leader/Screens/home/models/SettingListItem.dart';
 import 'package:leader/Screens/home/models/TalabatyIconButton.dart';
 import 'package:leader/routes/RouterImports.gr.dart';
 
-class ProfileTap extends StatelessWidget {
+class ProfileTap extends StatefulWidget {
   ProfileTap({Key? key}) : super(key: key);
+
+  @override
+  _ProfileTapState createState() => _ProfileTapState();
+}
+
+class _ProfileTapState extends State<ProfileTap> {
 
   List<SettingListItem> settingListItems = [
     SettingListItem(
@@ -64,6 +70,7 @@ class ProfileTap extends StatelessWidget {
       AutoRouter.of(context).push(TalabatyScreenRoute(index: 5));
     }),
   ];
+
 
   @override
   Widget build(BuildContext context) {

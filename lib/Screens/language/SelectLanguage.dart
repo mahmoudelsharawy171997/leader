@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:leader/Screens/globalwidgets/BottomButton.dart';
+import 'package:leader/Screens/globalwidgets/WhiteBottomButton.dart';
 import 'package:leader/routes/RouterImports.gr.dart';
 class SelectedLanguage extends StatelessWidget {
   const SelectedLanguage({Key? key}) : super(key: key);
@@ -37,39 +39,9 @@ class SelectedLanguage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20,),
-            InkWell(
-              child: Container(
-                alignment: Alignment.center,
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.teal[700]
-                ),
-                child: Text('العربية',
-                  style: TextStyle(fontSize: 20,color: Colors.white),
-                ),
-              ),
-              onTap: (){
-                AutoRouter.of(context).replace(HomePageRoute(index: 0));
-              },
-            ),
+            BottomButton(title: 'العربية',onTab: (){AutoRouter.of(context).replace(HomePageRoute(index: 0));},),
             SizedBox(height: 20,),
-            InkWell(
-              child: Container(
-                alignment: Alignment.center,
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.teal,),
-                ),
-                child: Text('ENGLISH',
-                  style: TextStyle(fontSize: 20,color: Colors.teal[700]),
-                ),
-              ),
-              onTap: (){},
-            ),
+            WhiteBottomButton(title: 'ENGLISH', onTab: () {  },),
           ],
         ),
       ),

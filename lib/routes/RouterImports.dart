@@ -1,7 +1,11 @@
 
 
 import 'package:auto_route/annotations.dart';
+import 'package:leader/Screens/authentication/screens/ConfirmNewPasswordScreen.dart';
+import 'package:leader/Screens/authentication/screens/ForgotPasswordScreen.dart';
 import 'package:leader/Screens/authentication/screens/LogInScreen.dart';
+import 'package:leader/Screens/authentication/screens/SignUpScreen.dart';
+import 'package:leader/Screens/authentication/screens/VerificationCodeScreen.dart';
 import 'package:leader/Screens/categoryDetails/CategoryDetailsScreen.dart';
 import 'package:leader/Screens/language/SelectLanguage.dart';
 import 'package:leader/Screens/notifications/NotificationScreen.dart';
